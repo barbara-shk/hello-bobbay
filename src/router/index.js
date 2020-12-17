@@ -1,9 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
-import Shop from '../views/Shop.vue'
+import Blog from '../views/Blog.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
+import NotFound from '../views/NotFound.vue'
+import ProductDetails from '../views/ProductDetails.vue'
+import Carousel from '../views/Carousel.vue'
+import CarouselSlide from '../views/CarouselSlide.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,9 +18,9 @@ const router = createRouter({
             component: Home
         },
         {
-            path: "/shop",
-            name: "Shop",
-            component: Shop
+            path: "/blog",
+            name: "Blog",
+            component: Blog
         },
         {
             path: "/contact",
@@ -27,6 +31,25 @@ const router = createRouter({
             path: "/about",
             name: "About",
             component: About
+        },
+        {
+            path: "/product/:name",
+            name: "ProductDetails",
+            component: ProductDetails
+        },
+        {
+            path: "/carousel",
+            name: "Carousel",
+            component: Carousel
+        },
+        {
+            path: "/carouselslide",
+            name: "CarouselSlide",
+            component: CarouselSlide
+        },
+        {
+            path: "/:catchAll(.*)",
+            component: NotFound
         }
     ]
 });

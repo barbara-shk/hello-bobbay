@@ -6,8 +6,7 @@
   <router-view class="w3-display-container w3-wide" style="margin-top:95px"/>
   <!-- ROUTER-VIEW PERMET DE CHARGER LES COMPOSANTS CORRESPONDANTS DE CHAQUE ROUTE -->
 
-
-  <Footer class="w3-container w3-padding-32"/>
+  <Footer class="w3-container w3-padding-32" id="contact"/>
 </div>
 </template>
 
@@ -15,8 +14,7 @@
 import Home from './components/Home.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
-import Product from './components/Product.vue'
-import Shop from './views/Shop.vue'
+import Blog from './views/Blog.vue'
 import About from './views/About.vue'
 
 
@@ -24,8 +22,15 @@ export default {
   name: 'App',
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    Home, Navbar, Footer,Product,Shop,About
-  }
+    Home, Navbar,Footer,Blog,About
+  },
+  
+  methods: {
+    addItemToCart(products) {
+      this.cart.push(products);
+      console.log("cart")
+    },
+}
 }
 </script>
 
