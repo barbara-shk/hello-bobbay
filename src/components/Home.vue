@@ -1,7 +1,9 @@
 <template>
-    <h1>
-        C'est bientôt noël 
+<div class="w3-display-container w3-wide hero">
+    <h1 class="w3-display-middle w3-center">
+        Shut up and go !  
     </h1>
+    </div>
 </template>
 
 <script>
@@ -25,10 +27,10 @@ export default {
 h1 {
     color: palevioletred;
 }
-body{
-    min-height: 100vh;
-    font-family: Futura, Helvetica, Arial, sans-serif;
-    background-image: url('../assets/neonbackground.jpg');
-
+.hero{
+    background-image: url(../assets/backgroundpic.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height:75vh;
 }
 </style>

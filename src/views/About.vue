@@ -3,14 +3,8 @@
 <div class="row">
   <div class="container">
     <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="blogimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-    </div>
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
+      <h2>ABOUT ME</h2>
+      <h5>Full-Stack Designer</h5>
       <div class="blogimg" style="height:200px;">Image</div>
       <p>Some text..</p>
     </div>
@@ -21,7 +15,7 @@
 
 <script>
 export default {
-    name:"Shop",
+    name:"About",
     data(){
         return{}
     }
@@ -29,8 +23,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 /* Header/Blog Title */
 .header {
   padding: 30px;
