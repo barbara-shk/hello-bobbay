@@ -8,6 +8,7 @@ import NotFound from '../views/NotFound.vue'
 import ProductDetails from '../views/ProductDetails.vue'
 import Carousel from '../views/Carousel.vue'
 import CarouselSlide from '../views/CarouselSlide.vue'
+import Shop from '../views/Shop.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -46,6 +47,11 @@ const router = createRouter({
             path: "/carouselslide",
             name: "CarouselSlide",
             component: CarouselSlide
+        },
+        {
+            path: "/shop",
+            name: "Shop",
+            component: Shop
         },
         {
             path: "/:catchAll(.*)",
