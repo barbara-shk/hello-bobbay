@@ -24,13 +24,6 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     Home, Navbar,Footer,Blog,About
   },
-  
-  methods: {
-    addItemToCart(products) {
-      this.cart.push(products);
-      console.log("cart")
-    },
-}
 }
 </script>
 
