@@ -1,6 +1,6 @@
 
 <template>
-  <div class="w3-container w3-padding-32" id="contact">
+  <div class="w3-container w3-padding-32 w3-center" style="margin:0 auto; max-width:50%;" id="contact">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
     <p>Call me !</p>
     <form action="/" target="_blank">

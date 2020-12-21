@@ -15,6 +15,7 @@ import Home from './components/Home.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import Blog from './views/Blog.vue'
+import Shop from './views/Shop.vue'
 import About from './views/About.vue'
 
 
@@ -22,7 +23,7 @@ export default {
   name: 'App',
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    Home, Navbar,Footer,Blog,About
+    Home, Navbar,Footer,Blog,About,Shop
   },
 }
 </script>
@@ -36,6 +37,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  transition: 0.4s;
 }
       body, h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', Helvetica, Arial, sans-serif !important; 

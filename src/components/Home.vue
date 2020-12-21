@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: 'Home',
     components: {
@@ -12,11 +13,22 @@ export default {
   },
     data(){
         return{
-            britImg:"https://64.media.tumblr.com/6b97e9ef77d73e17f5c80ab6a2635ae4/tumblr_nbotdtlmQS1qhub34o3_500.gif",
+            countryPicked:"",
 
         }
     },
     methods: {
+        getCountry() {
+            axios.get("https://raw.githubusercontent.com/samayo/country-json/master/src/country-by-currency-name.json")
+                .then(api => {
+                    this.countries = api.data;
+                    var countryList = this.countries;
+                    var countryRandom = countryList[Math.floor(Math.random() * countryList.length)];
+                    this.countryPicked = countryRandom.country
+                    console.log(this.countryPicked)
+                    return this.countryPicked
+                            });
+                    },
     },
     computed : {
 

@@ -1,17 +1,28 @@
 <template>
 
     <div class="w3-display-container maincontainer" style="overflow:hidden">
-        <img v-if="currentSlide==1" class="ero" src="../assets/travel-blog-cropped.jpg" alt="" style="width:100%;">
-        <img v-else-if="currentSlide==2" class="hero" src="../assets/travel-blog-2-cropped.jpg" alt="" style="width:100%;">
-        <img v-else class="hero" src="../assets/backgroundpic.jpg" alt="" style="width:100%;">
+        <img v-if="currentSlide==1" class="hero w3-animate-opacity" src="../assets/travel.jpg" alt="" style="width:100%;">
+        <img v-else-if="currentSlide==2" class="hero w3-animate-opacity" src="../assets/travel-2.jpg" alt="" style="width:100%;">
+        <img v-else class="hero w3-animate-opacity" src="../assets/backgroundpic.jpg" alt="" style="width:100%;">
         <article class="w3-display-middle">
                 <h1>Shut up and go ! </h1>
-                <button onclick="document.getElementById('britModal').style.display='block'" class="w3-margin-right w3-button w3-2020-rose-tan w3-border-0 w3-hover-white">Guess who?</button>
+                <button @click="getCountry()" class="w3-margin-right w3-button w3-2020-rose-tan w3-border-0 w3-hover-white">Where to?</button>
         </article>
+
+
+  <transition name="fade">
+      <div v-if="isShowing" class="modalBackground">
+    <span v-if="isShowing" class="modal w3-display-middle">
+        <h3 class="w3-display-middle">We're going to <strong>{{ countryPicked }} </strong>!!</h3>
+      <button @click="isShowing=false" class="w3-display-bottommiddle w3-button w3-black" style="margin-bottom:2em;">Close</button>
+    </span>
+    </div>
+  </transition>
     </div>
 
 </template>
 <script>
+import axios from 'axios';
 export default {
     name:"Carousel",
     data(){
@@ -22,7 +33,22 @@ export default {
             {url:'../assets/backgroundpic.jpg'},
             ],
             currentSlide:0,
+            isShowing: false,
         }
+    },
+    methods: {
+                getCountry() {
+            axios.get("https://raw.githubusercontent.com/samayo/country-json/master/src/country-by-currency-name.json")
+                .then(api => {
+                    this.countries = api.data;
+                    var countryList = this.countries;
+                    var countryRandom = countryList[Math.floor(Math.random() * countryList.length)];
+                    this.countryPicked = countryRandom.country
+                    this.isShowing = !this.isShowing;
+                    console.log(this.countryPicked)
+                    return this.countryPicked
+                            });
+                    },
     },
     mounted() {
         setInterval(() => {
@@ -54,5 +80,36 @@ h1 {
 img {
   position:relative;
   bottom:0;  
+}
+.w3-animate-opacity{
+    transition: 0.7s;
+}
+.modal {
+  background: rgb(255, 255, 255, 0.8);
+  color: black;
+  padding: 20px;
+  width: 50vw;
+  height: 25vh;
+  position: absolute;
+  border-radius: 20px;
+  border: #000 1px;
+  z-index: 9999;
+  padding: 20px 30px;
+}
+.modalBackground{
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

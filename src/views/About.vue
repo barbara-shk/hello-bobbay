@@ -5,8 +5,8 @@
     <div class="card">
       <h2>ABOUT ME</h2>
       <h5>Full-Stack Designer</h5>
-      <div class="blogimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
+      <div class="blogimg" style="height:200px;"></div>
+      <p>This is real, this is me. This is my vue project.</p>
     </div>
   </div>
 
@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style scoped>
-/* Header/Blog Title */
 .header {
   padding: 30px;
   font-size: 40px;
@@ -32,26 +31,13 @@ export default {
 }
 
 
-/* Fake image */
 .blogimg {
-  background-color: #aaa;
+  background-image: url("../assets/tokyonight.jpg");
+  background-size: cover;
+  background-position: center;
   width: 50%;
   padding: 20px;
   margin: auto;
-}
-
-/* Add a card effect for articles */
-.card {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
 }
       body, h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', Helvetica, Arial, sans-serif !important; 

@@ -1,7 +1,15 @@
 <template>
+  
+  <!-- button show -->
+  <button class="w3-button w3-black w3-top w3-center" @click="showModal = true" style="top:109px; max-width:10em;">({{cartObj.length}}) Open Cart</button>
+
+
+
+<!-- PRODUCTS -->
         <!-- content -->
-        <div class="w3-container w3-center" style="margin-top:40px">
-            <h1>{{ title }}</h1>
+        <div class="w3-container w3-center" style="margin-top:160px">
+            <h1 style="text-transform:uppercase;">{{ title }}</h1>
+            <h3 style="margin-bottom:100px;">{{ subtitle }}</h3>
             <!-- products -->
             <div class="w3-row-padding">
 
@@ -16,23 +24,22 @@
                         <p>
                             <span v-for="(value, name) in product.tags" :key="name"><strong>{{ name }}:</strong>{{ value }} </span>
                         </p>
-                        <p><button v-on:click="addItemToCart( product )">ADD TO CART</button></p>
+                        <p><button class="w3-button w3-black" v-on:click="addItemToCart( product )">ADD TO CART</button></p>
                     </div>
                 </div>
                 
             </div>
         </div>
+<!-- END PRODUCTS -->
 
-        <div class="modal-vue">
-  
-  <!-- button show -->
-  <button @click="showModal = true">show</button>
-  
+<!--CART-->
+
+<div class="modal-vue">
   <!-- overlay -->
   <div class="overlay" v-if="showModal" @click="showModal = false"></div>
-  
+  <transition name="fade">
   <!-- modal -->
-        <div class="w3-border modal" v-if="showModal">
+    <div class="w3-border modal" v-if="showModal">
     <button class="close" @click="showModal = false">x</button>
     <h3>CART</h3>
             <table class="w3-table w3-white">
@@ -54,16 +61,19 @@
                     <th v-else>{{totalPrice}}€</th>
                 </tr>
             </table>
-
-  </div>
-  
+    </div>
+    </transition>
 </div>
+
+<!--END CART-->
 </template>
 
 <script>
 export default {
     data(){
         return{
+        title:"I'll take you to my candle shop",
+        subtitle:"Inspired by scandinavian culture, those candles will mask the foul scent of your turkey burning in the over",
         products: [
                 {
                     name: "Fjord",
@@ -111,8 +121,7 @@ export default {
     methods:{
         addItemToCart(products){
         this.cartObj.push(products);
-        this.totalPrice += products.price,
-        this.displayCart = true;
+        this.totalPrice += products.price;
         }
     }
 }
@@ -134,10 +143,11 @@ img{
 }
 
 .modal-vue .modal {
-  position: relative;
+  position: absolute;
   width: 50vw;
   z-index: 9999;
-  margin: 0 auto;
+  top:50%;
+  left:25%;
   padding: 20px 30px;
   background-color: #fff;
 }
@@ -146,5 +156,12 @@ img{
   position: absolute;
   top: 10px;
   right: 10px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s ease-in-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
